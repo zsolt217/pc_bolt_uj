@@ -1,0 +1,132 @@
+﻿<Window x:Class="Szt2_projekt.UserWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Szt2_projekt"
+        mc:Ignorable="d"
+        Title="Felhasználó" Height="550" Width="700" Loaded="Window_Loaded" Closing="Window_Closing">
+    <Window.Resources>
+        <local:BoolToColorConverter x:Key="Converter"/>
+    </Window.Resources>
+    <Grid>
+        <TabControl Background="White" Margin="0,0,0,40">
+            <TabItem Header="Adatok" >
+                <Grid>
+                    <Label Content="Felhasználónév:" HorizontalAlignment="Left" Margin="87,50,0,0" VerticalAlignment="Top"/>
+                    <Label  Content="Telefonszám:" HorizontalAlignment="Left" Margin="87,166,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Cím:" HorizontalAlignment="Left" Margin="87,206,0,0" VerticalAlignment="Top"/>
+                    <Label  Content="Email:" HorizontalAlignment="Left" Margin="87,246,0,0" VerticalAlignment="Top"/>
+                    <Label  Content="{Binding Felhasznalonev}" HorizontalAlignment="Left"  Margin="261,50,0,0" VerticalAlignment="Top" Width="202"/>
+                    <Label Content="{Binding Telefonszam}" HorizontalAlignment="Left" Margin="261,166,0,0" VerticalAlignment="Top" Width="226"/>
+                    <Label Content="{Binding Cim}" HorizontalAlignment="Left" Margin="261,206,0,0" VerticalAlignment="Top" Width="202"/>
+                    <Label  Content="{Binding Email}" HorizontalAlignment="Left" Margin="261,246,0,0" VerticalAlignment="Top" Width="202"/>
+                    <Label  Content="Vezetéknév:" HorizontalAlignment="Left" Margin="87,83,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Keresztnév:" HorizontalAlignment="Left" Margin="87,123,0,0" VerticalAlignment="Top"/>
+                    <Label  Content="{Binding Vezeteknev}" HorizontalAlignment="Left" Margin="261,83,0,0" VerticalAlignment="Top" Width="202"/>
+                    <Label  Content="{Binding Keresztnev}" HorizontalAlignment="Left" Margin="261,123,0,0" VerticalAlignment="Top" Width="202"/>
+                    <Button Click="FelhAdatModosit_Click" Content="Adatok módosítása" Width="175" Height="40" Margin="239,295,243,103"></Button>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Konfiguráció">
+                <Grid >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="285*"></ColumnDefinition>
+                        <ColumnDefinition Width="397*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <ComboBox x:Name="cBoxAlaplap" ItemsSource="{Binding Alaplapok}" SelectedItem="{Binding SelectedAlaplap}" HorizontalAlignment="Left" Margin="52,30,0,0" VerticalAlignment="Top" Width="170" Height="22" SelectionChanged="cBoxAlaplap_SelectionChanged"/>
+                    <ComboBox x:Name="cBoxCPU" ItemsSource="{Binding Cpuk}" SelectedItem="{Binding SelectedCpu}" HorizontalAlignment="Left" Margin="52,75,0,0" VerticalAlignment="Top" Width="170" Height="22" SelectionChanged="cBoxCPU_SelectionChanged"/>
+                    <ComboBox x:Name="cBoxGPU" ItemsSource="{Binding Gpuk}" SelectedItem="{Binding SelectedGpu}" HorizontalAlignment="Left" Margin="52,120,0,0" VerticalAlignment="Top" Width="170" Height="22" SelectionChanged="cBoxGPU_SelectionChanged"/>
+                    <ComboBox x:Name="cBoxRAM" ItemsSource="{Binding Memoriak}" SelectedItem="{Binding SelectedMemoria}" HorizontalAlignment="Left" Margin="52,165,0,0" VerticalAlignment="Top" Width="170" Height="22" SelectionChanged="cBoxRAM_SelectionChanged"/>
+                    <ComboBox x:Name="cBoxHDD" ItemsSource="{Binding Hddk}" SelectedItem="{Binding SelectedHdd}" HorizontalAlignment="Left" Margin="52,210,0,0" VerticalAlignment="Top" Width="170" Height="22" SelectionChanged="cBoxHDD_SelectionChanged"/>
+                    <ComboBox x:Name="cBoxSSD" ItemsSource="{Binding Ssdk}" SelectedItem="{Binding SelectedSsd}" HorizontalAlignment="Left" Margin="52,255,0,0" VerticalAlignment="Top" Width="170" Height="22" SelectionChanged="cBoxSSD_SelectionChanged"/>
+                    <ComboBox x:Name="cBoxTapok" ItemsSource="{Binding Tapok}" SelectedItem="{Binding SelectedTap}" HorizontalAlignment="Left" Margin="52,300,0,0" VerticalAlignment="Top" Width="170" Height="22" SelectionChanged="cBoxTapok_SelectionChanged"/>
+                    <ComboBox x:Name="cBoxHazak" ItemsSource="{Binding Hazak}" SelectedItem="{Binding SelectedHaz}" HorizontalAlignment="Left" Margin="52,345,0,0" VerticalAlignment="Top" Width="170" Height="22" SelectionChanged="cBoxHazak_SelectionChanged"/>
+
+                    <RadioButton x:Name="rbAlaplap" Content="Alaplap:" HorizontalAlignment="Left" Margin="52,9,0,0" VerticalAlignment="Top" Height="16" Width="75" Checked="rbAlaplap_Checked" Unchecked="rbAlaplap_Unchecked"/>
+                    <RadioButton x:Name="rbProcesszor" Content="Processzor:" HorizontalAlignment="Left" Margin="52,55,0,0" VerticalAlignment="Top" Height="16" Width="75" Unchecked="rbProcesszor_Unchecked" Checked="rbProcesszor_Checked"/>
+                    <RadioButton x:Name="rbVideokartya" Content="Videókártya:" HorizontalAlignment="Left" Margin="52,100,0,0" VerticalAlignment="Top" Height="16" Width="82" Unchecked="rbVideokartya_Unchecked" Checked="rbVideokartya_Checked"/>
+                    <RadioButton x:Name="rbMemoria" Content="Memória:" HorizontalAlignment="Left" Margin="52,145,0,0" VerticalAlignment="Top" Height="16" Width="66" Unchecked="rbMemoria_Unchecked" Checked="rbMemoria_Checked"/>
+                    <RadioButton x:Name="rbWinchester" Content="Winchester:" HorizontalAlignment="Left" Margin="52,190,0,0" VerticalAlignment="Top" Height="16" Width="78" Checked="rbWinchester_Checked" Unchecked="rbWinchester_Unchecked"/>
+                    <RadioButton x:Name="rbSSD" Content="SSD meghajtó:" HorizontalAlignment="Left" Margin="52,235,0,0" VerticalAlignment="Top" Height="16" Width="94" Unchecked="rbSSD_Unchecked" Checked="rbSSD_Checked"/>
+                    <RadioButton x:Name="rbTap" Content="Tápegység:" HorizontalAlignment="Left" Margin="52,280,0,0" VerticalAlignment="Top" Height="16" Width="76" Unchecked="rbTap_Unchecked" Checked="rbTap_Checked"/>
+                    <RadioButton x:Name="rbHaz" Content="Ház:" HorizontalAlignment="Left" Margin="52,325,0,0" VerticalAlignment="Top" Height="16" Width="39" Unchecked="rbHaz_Unchecked" Checked="rbHaz_Checked"/>
+
+                    <Button x:Name="MegrendelésButton" Content="Megrendelés!" Margin="32,401,157,10" Click="MegrendelésButton_Click" />
+                    <Button x:Name="MentésButton" Content="Mentés!" Margin="160,401,33,10" Click="MentésButton_Click"/>
+                    <Grid x:Name="AlkatreszAdatokGrid" Grid.Column="1">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+
+
+
+                        <Label x:Name="lbl1" Grid.Column="0" Grid.Row="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Margin="10"></Label>
+                        <Label x:Name="lbl2" Grid.Column="0" Grid.Row="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Margin="10"></Label>
+                        <Label x:Name="lbl3"  Grid.Column="0" Grid.Row="2" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Margin="10"></Label>
+                        <Label x:Name="lbl4"  Grid.Column="0" Grid.Row="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Margin="10"></Label>
+                        <Label x:Name="lbl5"  Grid.Column="0" Grid.Row="4" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Margin="10"></Label>
+                        <Label x:Name="lbl6" Grid.Column="0" Grid.Row="5" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Margin="10"></Label>
+                        <Label x:Name="lbl7"  Grid.Column="0" Grid.Row="6" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Margin="10"></Label>
+
+
+
+                        <Label x:Name="lbl11" Content="" Grid.Column="1" Grid.Row="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Margin="10"></Label>
+                        <Label x:Name="lbl12"  Content="" Grid.Column="1" Grid.Row="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Margin="10"></Label>
+                        <Label x:Name="lbl13"  Content="" Grid.Column="1" Grid.Row="2" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Margin="10"></Label>
+                        <Label x:Name="lbl14"  Content="" Grid.Column="1" Grid.Row="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Margin="10"></Label>
+                        <Label x:Name="lbl15"  Content="" Grid.Column="1" Grid.Row="4" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Margin="10"></Label>
+                        <Label x:Name="lbl16"  Content="" Grid.Column="1" Grid.Row="5" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Margin="10"></Label>
+                        <Label x:Name="lbl17"  Content="" Grid.Column="1" Grid.Row="6" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Margin="10"></Label>
+
+                    </Grid>
+                    <Label Content="{Binding RendelesOsszeg}" ContentStringFormat="Összesen: {0} Ft" HorizontalAlignment="Left" Margin="52,372,0,0" VerticalAlignment="Top"/>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Kedvencek">
+                <Grid>
+                    <Button x:Name="kedvencMegrendelesButton" Content="Megrendelés!" HorizontalAlignment="Left" Margin="118,383,0,0" VerticalAlignment="Top" Width="100"/>
+                    <Button x:Name="kedvencModositasButton" Content="Módosítás!" HorizontalAlignment="Left" Margin="475,383,0,0" VerticalAlignment="Top" Width="100"/>
+                    <ComboBox x:Name="cBoxKedvenc" ItemsSource="{Binding Kedvencek}"  SelectedItem="{Binding SelectedKedvenc}" HorizontalAlignment="Left" Margin="118,52,0,0" VerticalAlignment="Top" Width="457"/>
+                    <ListBox x:Name="listBox" HorizontalAlignment="Left" Height="230" Margin="118,98,0,0" VerticalAlignment="Top" Width="457"/>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Kapcsolatfelvétel">
+                <Grid>
+                    <ListBox Margin="10,46,408,30" ItemsSource="{Binding Bejovok}" SelectedItem="{Binding SelectedUzenet}" >
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Height="40" Width="210" Background="{Binding LATTA_E, Converter={StaticResource Converter}}">
+                                    <Label Content="Ügyintéző" HorizontalAlignment="Left" Height="33" Margin="0,1,0,0" VerticalAlignment="Top" Width="105"/>
+                                    <Label Content="{Binding DATUM}" HorizontalAlignment="Left" Height="39" Margin="137,0,0,0" VerticalAlignment="Top" Width="105"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                    <TextBlock HorizontalAlignment="Left" Margin="302,46,0,0" TextWrapping="Wrap" Text="{Binding UzenetSzoveg }" VerticalAlignment="Top" Width="374" Height="135"/>
+                    <TextBox x:Name="kapcsolattBox" Text="{Binding Kimenouzenet}" Margin="302,217,10,71" AcceptsReturn="True" TextWrapping="Wrap" />
+                    <Button x:Name="kuldesButton" Content="Küldés!" Margin="449,385,141,30" Click="kuldesButton_Click"/>
+                    <Label Content="Bejövő üzenetek:" HorizontalAlignment="Left" Margin="10,15,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Üzenet:" HorizontalAlignment="Left" Margin="302,186,0,0" VerticalAlignment="Top"/>
+
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Button Click="Kijelentkezo_Click" Content="Kijelentkezés" HorizontalAlignment="Left" Margin="504,0,0,5" VerticalAlignment="Bottom" Width="124"/>
+        <Label Content="{Binding Felhasznalonev}" HorizontalAlignment="Left" Margin="424,0,0,5" VerticalAlignment="Bottom" Width="75" Height="25" />
+    </Grid>
+</Window>
