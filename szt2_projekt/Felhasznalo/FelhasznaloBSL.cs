@@ -14,7 +14,7 @@ namespace Szt2_projekt
         KompatibilitasVizsgalo vizsgalo;
         decimal felhasznaloid;
         RendelesVezerlo rendelesvezerlo;
-            KedvencVezerlo kedvencvezerlo;
+        //KedvencVezerlo kedvencvezerlo;
         public FelhasznaloBSL(decimal felhasznaloid, FelhasznaloVM Felhasznalovm)
         {
             VM = Felhasznalovm;
@@ -24,7 +24,7 @@ namespace Szt2_projekt
             TermekekBetoltese();
             vizsgalo = new KompatibilitasVizsgalo(VM); //feliratkozik az ablak termékváltozás eseményére
             rendelesvezerlo = new RendelesVezerlo(Rang.Felhasznalo);
-            kedvencvezerlo = new KedvencVezerlo();
+            //kedvencvezerlo = new KedvencVezerlo();
         }
         void FelhasznaloAdatbetoltesVMbe(decimal felhasznaloid)//felhasználóvm elemeinek feltöltése
         {
@@ -121,6 +121,35 @@ namespace Szt2_projekt
             }
         }
 
+        public void RendelesMenteseKedvencbol(KEDVENCEK selectedKedvenc)
+        {
+            var p = DB.RENDELESEK.OrderByDescending(x => x.RENDELES_ID).FirstOrDefault();
+            int newId = (null == p ? 0 : (int)p.RENDELES_ID) + 1;
+            RENDELESEK uj = new RENDELESEK
+            {
+                ALAPLAP_ID = selectedKedvenc.ALAPLAP_ID,
+                CPU_ID = selectedKedvenc.CPU_ID,
+                FELHASZNALO_ID = felhasznaloid,
+                GPU_ID = selectedKedvenc.GPU_ID,
+                HAZ_ID = selectedKedvenc.HAZ_ID,
+                HDD_ID = selectedKedvenc.HDD_ID,
+                MEMORIA_ID = selectedKedvenc.MEMORIA_ID,
+                SSD_ID = (selectedKedvenc.SSD.TIPUSSZAM.Contains("*") ? (decimal?)null : selectedKedvenc.SSD_ID),
+                RENDELES_ID = newId,
+                TAP_ID = selectedKedvenc.TAP_ID
+            };
+            try
+            {
+                DB.RENDELESEK.Add(uj);
+                DB.SaveChanges();
+                MessageBox.Show("Rendelés leadva!");
+            }
+            catch (Exception hiba)
+            {
+                Megosztott.Logolas(hiba.InnerException.Message);
+                MessageBox.Show("Adatbázishiba, nem sikerült rögzíteni.");
+            }
+        }
 
         public void KedvencekMentes()
         {
@@ -152,7 +181,20 @@ namespace Szt2_projekt
                         KEDVENCEK_ID = newId,
                         TAP_ID = VM.SelectedTap.TAP_ID
                     };
-                    kedvencvezerlo.MentesKedvencekbe(felhasznaloid, uj);
+                    try
+                    {
+                        DB.KEDVENCEK.Add(uj);
+                        DB.SaveChanges();
+                        MessageBox.Show("Kedvencek közé mentve");
+
+                    }
+                    catch (Exception hiba)
+                    {
+                        Megosztott.Logolas(hiba.InnerException.Message);
+                        MessageBox.Show("Adatbázishiba, nem sikerült rögzíteni.");
+
+
+                    }
                 }
                 else
                 {

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using Szt2_projekt.Felhasznalo;
 
 
 namespace Szt2_projekt
@@ -282,20 +283,25 @@ namespace Szt2_projekt
 
         #region Kedvencek
 
-        private KEDVENCEK leendoKedvenc;
+        private KEDVENCEK selectedKedvenc;
+
+        public KEDVENCEK SelectedKedvenc
+        {
+            get { return selectedKedvenc; }
+            set { selectedKedvenc = value; OnPropertyChanged("SelectedKedvenc"); }
+        }
+
         private KedvencVezerlo vezerlo;
         private ObservableCollection<KEDVENCEK> kedvencek;
         public ObservableCollection<KEDVENCEK> Kedvencek
         {
-            get { KedvencBetolt(); return kedvencek; }
-            set { kedvencek = value; }
-            //OnPropertyChanged();}
+            get { return kedvencek; }
+            set { kedvencek = value; } //OnPropertyChanged(); }
         }
 
         public void KedvencBetolt()
         {
-            //kedvencek = vezerlo.KedvencekBetoltese(id);
-            kedvencek= new ObservableCollection<KEDVENCEK>(vezerlo.KedvencekBetoltese(id));
+            Kedvencek = vezerlo.KedvencekBetoltese(id);
         }
 
         public void KedvencMentes()
@@ -312,7 +318,13 @@ namespace Szt2_projekt
             //    TAP_ID = SelectedTap.TAP_ID
             //};
             //vezerlo.MentesKedvencekbe(id, leendoKedvenc);
-            OnPropertyChanged("Kedvencek");
+            Kedvencek = vezerlo.KedvencekBetoltese(id);
+            //OnPropertyChanged("Kedvencek");
+        }
+
+        public void KedvencMódosítás(KEDVENCEK selectedKedvenc)
+        {
+
         }
 
         #endregion
