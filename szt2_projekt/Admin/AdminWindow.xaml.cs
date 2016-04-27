@@ -46,7 +46,7 @@ namespace Szt2_projekt
 
 
         #region Felhasználós cuccok
-        void Frissit() // egyelőre ezzel a megoldással "frissül" a listbox(mármint minden gombnyomás után lefut a lekérdezés)
+        void Frissit()
         {
             ab = new AdatbazisEntities();
             var felhasznalok = from akt in ab.FELHASZNALO
@@ -73,10 +73,31 @@ namespace Szt2_projekt
                 var torlo = from akt in ab.FELHASZNALO
                             where akt.NEV == torlendouser
                             select akt;
-                
+
                 try
                 {
                     var t1 = torlo.Single();
+
+                    if (t1.KEDVENCEK != null)
+                    {
+                        List<int> kedvencIDk = new List<int>();
+                        foreach (KEDVENCEK akt in t1.KEDVENCEK)
+                        {
+                            kedvencIDk.Add((int)akt.KEDVENCEK_ID);
+                        }
+
+                        foreach (KEDVENCEK akt in ab.KEDVENCEK)
+                        {
+                            foreach (int id in kedvencIDk)
+                            {
+                                if (akt.KEDVENCEK_ID == id)
+                                {
+                                    ab.KEDVENCEK.Remove(akt);
+                                }
+                            }
+                        }
+                    }
+
                     ab.SZEMELYES_ADATOK.Remove((ab.SZEMELYES_ADATOK.Where(x => x.FELHASZNALO_ID == t1.FELHASZNALO_ID)).SingleOrDefault());
                     ab.FELHASZNALO.Remove(t1);
                     ab.SaveChanges();
@@ -133,7 +154,7 @@ namespace Szt2_projekt
                     admin.KivalasztottCsoport = admin.KivalasztottCsoport; // trükk, hogy frissítse a listbox tartalmát a binding (termék típusnév változáskor)
                 }
             }
-            
+
         }
 
         private void button_Copy3_Click(object sender, RoutedEventArgs e) // termék törlése
