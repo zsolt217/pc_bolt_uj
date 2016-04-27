@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Data;
 using Szt2_projekt.Felhasznalo;
 
 
@@ -47,6 +48,7 @@ namespace Szt2_projekt
             KedvencBetolt();
             felhasznalovaltoztatasengedelyezes = true;
         }
+
         #region sajatadatok
         decimal id;
         string felhasznalonev;
@@ -288,7 +290,7 @@ namespace Szt2_projekt
         public KEDVENCEK SelectedKedvenc
         {
             get { return selectedKedvenc; }
-            set { selectedKedvenc = value; OnPropertyChanged("SelectedKedvenc"); }
+            set { selectedKedvenc = value; OnPropertyChanged(); }
         }
 
         private KedvencVezerlo vezerlo;
@@ -306,25 +308,20 @@ namespace Szt2_projekt
 
         public void KedvencMentes()
         {
-            //leendoKedvenc = new KEDVENCEK
-            //{
-            //    ALAPLAP_ID = SelectedAlaplap.ALAPLAP_ID,
-            //    CPU_ID = SelectedCpu.CPU_ID,
-            //    GPU_ID = SelectedGpu.GPU_ID,
-            //    MEMORIA_ID = SelectedMemoria.MEMORIA_ID,
-            //    HDD_ID = SelectedHdd.HDD_ID,
-            //    SSD_ID = SelectedSsd.SSD_ID,
-            //    HAZ_ID = SelectedHaz.HAZ_ID,
-            //    TAP_ID = SelectedTap.TAP_ID
-            //};
-            //vezerlo.MentesKedvencekbe(id, leendoKedvenc);
-            Kedvencek = vezerlo.KedvencekBetoltese(id);
-            //OnPropertyChanged("Kedvencek");
+            //Kedvencek = vezerlo.KedvencekBetoltese(id);
+            OnPropertyChanged("Kedvencek");
         }
 
-        public void KedvencMódosítás(KEDVENCEK selectedKedvenc)
+        public void KedvencMódosítás()
         {
-
+            SelectedAlaplap = SelectedKedvenc.ALAPLAP;
+            SelectedCpu = SelectedKedvenc.CPU;
+            SelectedGpu = SelectedKedvenc.GPU;
+            SelectedMemoria = SelectedKedvenc.MEMORIA;
+            SelectedHdd = SelectedKedvenc.HDD;
+            SelectedSsd = SelectedKedvenc.SSD;
+            SelectedTap = SelectedKedvenc.TAP;
+            SelectedHaz = SelectedKedvenc.HAZ;
         }
 
         #endregion
