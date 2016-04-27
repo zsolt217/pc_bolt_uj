@@ -272,7 +272,10 @@ namespace Szt2_projekt
         public ALAPLAP SelectedAlaplap
         {
             get { return selectedAlaplap; }
-            set { selectedAlaplap = value; OnPropertyChanged(); if(value != null) selectedAlaplapAr = selectedAlaplap.AR; OnPropertyChanged("RendelesOsszeg"); if (felhasznalovaltoztatasengedelyezes) TermekValtozas(); }
+            set { selectedAlaplap = value; 
+                OnPropertyChanged();
+                if(value != null) selectedAlaplapAr = selectedAlaplap.AR; OnPropertyChanged("RendelesOsszeg");
+                if (felhasznalovaltoztatasengedelyezes) TermekValtozas(); }
         }
 
         public List<ALAPLAP> Alaplapok
@@ -308,24 +311,10 @@ namespace Szt2_projekt
 
         public void KedvencMentes()
         {
-            //Kedvencek = vezerlo.KedvencekBetoltese(id);
+            Kedvencek = vezerlo.KedvencekBetoltese(id);
             OnPropertyChanged("Kedvencek");
         }
 
-        public void KedvencMódosítás()
-        {
-            SelectedAlaplap = SelectedKedvenc.ALAPLAP;
-            SelectedCpu = SelectedKedvenc.CPU;
-            SelectedGpu = SelectedKedvenc.GPU;
-            SelectedMemoria = SelectedKedvenc.MEMORIA;
-            SelectedHdd = SelectedKedvenc.HDD;
-            SelectedSsd = SelectedKedvenc.SSD;
-            SelectedTap = SelectedKedvenc.TAP;
-            SelectedHaz = SelectedKedvenc.HAZ;
-        }
-
         #endregion
-
-
     }
 }

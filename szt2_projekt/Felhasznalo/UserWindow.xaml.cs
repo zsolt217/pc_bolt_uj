@@ -362,7 +362,7 @@ namespace Szt2_projekt
 
         private void cBoxAlaplap_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if ((rbAlaplap.IsChecked == true) && cBoxAlaplap.SelectedIndex != cBoxAlaplap.Items.Count - 1)
+            if (cBoxAlaplap.SelectedIndex != -1 && (rbAlaplap.IsChecked == true) && cBoxAlaplap.SelectedIndex != cBoxAlaplap.Items.Count - 1)
             {
                 ALAPLAP aktalaplap = new ALAPLAP();
                 aktalaplap = (ALAPLAP)cBoxAlaplap.SelectedValue;
@@ -384,7 +384,7 @@ namespace Szt2_projekt
 
         private void cBoxCPU_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if ((rbProcesszor.IsChecked == true) && cBoxCPU.SelectedIndex != cBoxCPU.Items.Count - 1)
+            if (cBoxCPU.SelectedIndex != -1 && (rbProcesszor.IsChecked == true) && cBoxCPU.SelectedIndex != cBoxCPU.Items.Count - 1)
             {
                 CPU akt = new CPU();
 
@@ -406,7 +406,7 @@ namespace Szt2_projekt
 
         private void cBoxHDD_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if ((rbWinchester.IsChecked == true) && cBoxHDD.SelectedIndex != cBoxHDD.Items.Count - 1)
+            if (cBoxHDD.SelectedIndex != -1 && (rbWinchester.IsChecked == true) && cBoxHDD.SelectedIndex != cBoxHDD.Items.Count - 1)
             {
                 //ab = new AdatbazisEntities();
                 HDD aktHDD = new HDD();
@@ -432,7 +432,7 @@ namespace Szt2_projekt
 
         private void cBoxGPU_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if ((rbVideokartya.IsChecked == true) && cBoxGPU.SelectedIndex != cBoxGPU.Items.Count - 1)
+            if (cBoxGPU.SelectedIndex != -1 && (rbVideokartya.IsChecked == true) && cBoxGPU.SelectedIndex != cBoxGPU.Items.Count - 1)
             {
                 GPU akt = new GPU();
 
@@ -452,7 +452,7 @@ namespace Szt2_projekt
 
         private void cBoxRAM_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if ((rbMemoria.IsChecked == true) && cBoxRAM.SelectedIndex != cBoxRAM.Items.Count - 1)
+            if (cBoxRAM.SelectedIndex != -1 && (rbMemoria.IsChecked == true) && cBoxRAM.SelectedIndex != cBoxRAM.Items.Count - 1)
             {
                 MEMORIA akt = new MEMORIA();
 
@@ -473,7 +473,7 @@ namespace Szt2_projekt
 
         private void cBoxSSD_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if ((rbSSD.IsChecked == true) && cBoxSSD.SelectedIndex != cBoxSSD.Items.Count - 1)
+            if (cBoxSSD.SelectedIndex != -1 && (rbSSD.IsChecked == true) && cBoxSSD.SelectedIndex != cBoxSSD.Items.Count - 1)
             {               
                 SSD akt = new SSD();
                
@@ -492,7 +492,7 @@ namespace Szt2_projekt
 
         private void cBoxTapok_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if ((rbTap.IsChecked == true) && cBoxTapok.SelectedIndex != cBoxTapok.Items.Count - 1)
+            if (cBoxTapok.SelectedIndex != -1 && (rbTap.IsChecked == true) && cBoxTapok.SelectedIndex != cBoxTapok.Items.Count - 1)
             {
                 TAP akt = new TAP();
 
@@ -511,8 +511,8 @@ namespace Szt2_projekt
 
         private void cBoxHazak_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-          
-            if ((rbHaz.IsChecked == true) && cBoxHazak.SelectedIndex != cBoxHazak.Items.Count - 1)
+
+            if (cBoxHazak.SelectedIndex != -1 && (rbHaz.IsChecked == true) && cBoxHazak.SelectedIndex != cBoxHazak.Items.Count - 1)
             {
                 HAZ akt = new HAZ();
 
@@ -530,10 +530,11 @@ namespace Szt2_projekt
         }
 
         private void kedvencModositasButton_Click(object sender, RoutedEventArgs e)
-        {
+        { 
+            
+            BS.TermekekBetoltese();
             KonfiguracioTabItem.IsSelected = true;
-
-            VM.KedvencMódosítás();
+            BS.KedvencModositas((KEDVENCEK)listBox.SelectedItem);
         }
     }
 }

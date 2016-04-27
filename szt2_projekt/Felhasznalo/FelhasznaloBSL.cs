@@ -21,8 +21,9 @@ namespace Szt2_projekt
             DB = new AdatbazisEntities();
             this.felhasznaloid = felhasznaloid;
             FelhasznaloAdatbetoltesVMbe(felhasznaloid);
-            TermekekBetoltese();
             vizsgalo = new KompatibilitasVizsgalo(VM); //feliratkozik az ablak termékváltozás eseményére
+            TermekekBetoltese();
+            
             rendelesvezerlo = new RendelesVezerlo(Rang.Felhasznalo);
             //kedvencvezerlo = new KedvencVezerlo();
         }
@@ -47,8 +48,9 @@ namespace Szt2_projekt
             }
         }
 
-        void TermekekBetoltese()
+        public void TermekekBetoltese()
         {
+            vizsgalo.Ujrabetoltes = true;
             List<ALAPLAP> alaplapok = DB.ALAPLAP.ToList();
             alaplapok.Add(new ALAPLAP { TIPUSSZAM = "*nincs elem kivalasztva" });
             VM.Alaplapok = alaplapok;
@@ -81,6 +83,7 @@ namespace Szt2_projekt
             tapok.Add(new TAP { TIPUSSZAM = "*nincs elem kivalasztva" });
             VM.Tapok = tapok;
             VM.SelectedTap = VM.Tapok.Last();
+            vizsgalo.Ujrabetoltes = false;
         }
         public void RendelesMentes()
         {
@@ -203,5 +206,23 @@ namespace Szt2_projekt
             }
         }
 
+        public void KedvencModositas(KEDVENCEK selectKedvenc)
+        {
+            VM.SelectedAlaplap = VM.Alaplapok.Where(x => x.ALAPLAP_ID == selectKedvenc.ALAPLAP.ALAPLAP_ID).Single();
+
+            VM.SelectedCpu = VM.Cpuk.Where(x => x.CPU_ID == selectKedvenc.CPU.CPU_ID).Single();
+
+            VM.SelectedGpu = VM.Gpuk.Where(x => x.GPU_ID == selectKedvenc.GPU.GPU_ID).Single();
+
+            VM.SelectedMemoria = VM.Memoriak.Where(x => x.MEMORIA_ID == selectKedvenc.MEMORIA.MEMORIA_ID).Single();
+
+            VM.SelectedHdd = VM.Hddk.Where(x => x.HDD_ID == selectKedvenc.HDD.HDD_ID).Single();
+
+            VM.SelectedSsd = VM.Ssdk.Where(x => x.SSD_ID == selectKedvenc.SSD.SSD_ID).Single();
+
+            VM.SelectedTap = VM.Tapok.Where(x => x.TAP_ID == selectKedvenc.TAP.TAP_ID).Single();
+
+            VM.SelectedHaz = VM.Hazak.Where(x => x.HAZ_ID == selectKedvenc.HAZ.HAZ_ID).Single();
+        }
     }
 }
