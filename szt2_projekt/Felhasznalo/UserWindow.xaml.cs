@@ -50,10 +50,10 @@ namespace Szt2_projekt
             labelek.Add(lbl6);
             labelek.Add(lbl7);
             alaplaplabelnevek = new string[] { "Ár (Ft):", "Név:", "Processzor foglalat:", "Memóriaslotok száma:", "Memóriatípus:", "Chipset:", "Méretszabvány:" };
-            tarololabelnevek = new string[] { "Ár (Ft):", "Név:", "Kapacitás (MB):" };
-            proclabelnevek = new string[] { "Ár (Ft):", "Név:", "Foglalat:", "Fogyasztás (W):", "Órajel (Mhz):", "Magok száma:" };
+            tarololabelnevek = new string[] { "Ár (Ft):", "Név:", "Kapacitás (GB):" };
+            proclabelnevek = new string[] { "Ár (Ft):", "Név:", "Foglalat:", "Fogyasztás (W):", "Órajel (Ghz):", "Magok száma:" };
             gpulabelnevek = new string[] { "Ár (Ft):", "Név:", "Fogyasztás (W):", "Memória (GB):" };
-            ramlabelnevek = new string[] { "Ár (Ft):", "Név:", "Típus:", "Órajel (Mhz):", "Kapacitás: (MB)" };
+            ramlabelnevek = new string[] { "Ár (Ft):", "Név:", "Típus:", "Órajel (Mhz):", "Kapacitás: (GB)" };
             taplabelnevek = new string[] { "Ár: (Ft)", "Név:", "Teljesítmény: (W)" };
             hazlabelnevek = new string[] { "Ár (Ft):", "Név:", "Méretszabvány:" };
 
@@ -160,8 +160,9 @@ namespace Szt2_projekt
             lbl15.Content = string.Empty;
             lbl16.Content = string.Empty;
             lbl17.Content = string.Empty;
-        } // az adatlabeleket nulláza
+        } 
         AdatbazisEntities ab;
+        #region Adatmegjelenítés
         private void rbAlaplap_Checked(object sender, RoutedEventArgs e)
         {
             LabelNullaz();
@@ -528,7 +529,7 @@ namespace Szt2_projekt
                 LabelNullaz();
             }
         }
-
+#endregion 
         private void kedvencModositasButton_Click(object sender, RoutedEventArgs e)
         { 
             

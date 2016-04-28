@@ -44,7 +44,7 @@ namespace Szt2_projekt
             string bevittFelhNev = felhasznalonevTextBox.Text;
             string bevittJelszo = jelszoPasswordBox.Password;
 
-            if (bevittFelhNev == "admin" && bevittJelszo == "admin") // ha adminként akarok belépni,egyelőre ez a felhasználónév és jelszó,de a bejelentkezoVM-ben kéne 1 külön cucc az adminnak is,nem?
+            if (bevittFelhNev == "admin" && bevittJelszo == "admin")
             {
                 AdminWindow adminablak = new AdminWindow();
                 adminablak.Show();

@@ -38,14 +38,12 @@ namespace Szt2_projekt.Admin
         {
             FELHASZNALO ujfelhasznalo = new FELHASZNALO();
             SZEMELYES_ADATOK ujadatok = new SZEMELYES_ADATOK();
-            int ujID = (int)ab.FELHASZNALO.Max(x => x.FELHASZNALO_ID) + 1; //talán így is jó
+            int ujID = (int)ab.FELHASZNALO.Max(x => x.FELHASZNALO_ID) + 1; 
 
             ujfelhasznalo.FELHASZNALO_ID = ujID;
             ujfelhasznalo.NEV = tBoxFelhasznaloNev.Text;
             ujfelhasznalo.BEOSZTAS = cBoxBeosztas.SelectedItem.ToString();
             ujfelhasznalo.JELSZO = passwordBox1.Password.ToString();
-            //ujfelhasznalo.RENDELESEK = new List<RENDELESEK>();
-            //ujfelhasznalo.UZENETEK = new List<UZENETEK>();
             ujfelhasznalo.SZEMELYES_ADATOK = ujadatok;
 
             ujadatok.FELHASZNALO_ID = ujID;

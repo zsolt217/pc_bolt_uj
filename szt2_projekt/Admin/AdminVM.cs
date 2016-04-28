@@ -9,7 +9,7 @@ using System.Windows;
 using Szt2_projekt.Admin;
 using Szt2_projekt.Kozos;
 
-namespace Szt2_projekt //szval érted,be sem tölti az ablakot
+namespace Szt2_projekt 
 {
     class AdminVM : INotifyPropertyChanged
     {

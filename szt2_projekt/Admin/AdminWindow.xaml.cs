@@ -23,7 +23,7 @@ namespace Szt2_projekt
     public partial class AdminWindow : Window
     {
         AdatbazisEntities ab;
-        AdminVM admin; // tök őszintén: minek neki usingolnia a "Szt2_projekt.Ugyintezo;"-t,ahogy h elérje az AdminVM osztályt?
+        AdminVM admin;
         public AdminWindow()
         {
             InitializeComponent();
@@ -97,6 +97,24 @@ namespace Szt2_projekt
                             }
                         }
                     }
+                    if (t1.UZENETEK != null)
+                    {
+                        List<int> uzenetIDk = new List<int>();
+                        foreach (UZENETEK akt in t1.UZENETEK)
+                        {
+                            uzenetIDk.Add((int)akt.UZENET_ID);
+                        }
+
+                        foreach (UZENETEK akt in ab.UZENETEK)
+                        {
+                            foreach (int id in uzenetIDk)
+                            {
+                                ab.UZENETEK.Remove(akt);
+                            }
+                        }
+                    }
+
+
 
                     ab.SZEMELYES_ADATOK.Remove((ab.SZEMELYES_ADATOK.Where(x => x.FELHASZNALO_ID == t1.FELHASZNALO_ID)).SingleOrDefault());
                     ab.FELHASZNALO.Remove(t1);
