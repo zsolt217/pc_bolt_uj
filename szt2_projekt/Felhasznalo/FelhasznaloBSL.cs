@@ -137,7 +137,7 @@ namespace Szt2_projekt
                 HAZ_ID = selectedKedvenc.HAZ_ID,
                 HDD_ID = selectedKedvenc.HDD_ID,
                 MEMORIA_ID = selectedKedvenc.MEMORIA_ID,
-                SSD_ID = (selectedKedvenc.SSD.TIPUSSZAM.Contains("*") ? (decimal?)null : selectedKedvenc.SSD_ID),
+                SSD_ID = selectedKedvenc.SSD_ID ?? (decimal?)null,
                 RENDELES_ID = newId,
                 TAP_ID = selectedKedvenc.TAP_ID
             };
