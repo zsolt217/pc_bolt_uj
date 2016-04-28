@@ -38,6 +38,10 @@ namespace Szt2_projekt
 
         public override string ToString()
         {
+            if (SSD == null)
+            {
+                SSD = new SSD();
+            }
             return "Alaplap: " + ALAPLAP.TIPUSSZAM + "\nCPU: " + CPU.TIPUSSZAM + "\nGPU: " + GPU.TIPUSSZAM + "\nHáz: " + HAZ.TIPUSSZAM +
                 "\nHDD: " + HDD.TIPUSSZAM + "\nSSD: " + SSD.TIPUSSZAM + "\nMemória: " + MEMORIA.TIPUSSZAM + "\nTáp: " + TAP.TIPUSSZAM;
         }
