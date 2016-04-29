@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Szt2_projekt"
         mc:Ignorable="d"
-        Title="Regisztráció" Height="497" Width="400">
+        Title="Regisztráció" Height="497" Width="400" Icon="/Resources/favicon.ico">
     <Grid Margin="0,-3,0,3">
         <Label  Content="Felhasználó név:" HorizontalAlignment="Left"  VerticalAlignment="Top" Margin="44,10,0,0" Width="108"/>
         <Label  Content="Telefonszám:" HorizontalAlignment="Left" Margin="44,258,0,0" VerticalAlignment="Top"/>
@@ -17,8 +17,26 @@
         <TextBox Text="{Binding Cim}" Width="257" HorizontalAlignment="Left" Margin="98,298,0,0" VerticalAlignment="Top"/>
         <TextBox Text="{Binding Email}" Width="216"  HorizontalAlignment="Left" Margin="139,342,0,0" VerticalAlignment="Top"/>
 
-        <Button x:Name="regButton" Content="Regisztrálok!" HorizontalAlignment="Left" Margin="44,410,0,0" VerticalAlignment="Top" Width="118" Click="regButton_Click"/>
-        <Button x:Name="megsemButton" Content="Mégsem" HorizontalAlignment="Left" Margin="237,410,0,0" VerticalAlignment="Top" Width="118" Click="megsemButton_Click"/>
+        <Button x:Name="regButton" HorizontalAlignment="Left" Margin="44,410,0,0" VerticalAlignment="Top" Width="118" Click="regButton_Click">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <Canvas x:Name="iconCheckmark" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Width="16" Height="16">
+                        <Path Fill="#444" Data="M13.5 2l-7.5 7.5-3.5-3.5-2.5 2.5 6 6 10-10z" />
+                    </Canvas>
+                    <TextBlock Text=" Regisztráció" />
+                </StackPanel>
+            </Button.Content>
+        </Button>
+        <Button x:Name="megsemButton" HorizontalAlignment="Left" Margin="237,410,0,0" VerticalAlignment="Top" Width="118" Click="megsemButton_Click">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <Canvas x:Name="iconCross" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Width="16" Height="16">
+                        <Path Fill="#444" Data="M15.854 12.854c-0-0-0-0-0-0l-4.854-4.854 4.854-4.854c0-0 0-0 0-0 0.052-0.052 0.090-0.113 0.114-0.178 0.066-0.178 0.028-0.386-0.114-0.529l-2.293-2.293c-0.143-0.143-0.351-0.181-0.529-0.114-0.065 0.024-0.126 0.062-0.178 0.114 0 0-0 0-0 0l-4.854 4.854-4.854-4.854c-0-0-0-0-0-0-0.052-0.052-0.113-0.090-0.178-0.114-0.178-0.066-0.386-0.029-0.529 0.114l-2.293 2.293c-0.143 0.143-0.181 0.351-0.114 0.529 0.024 0.065 0.062 0.126 0.114 0.178 0 0 0 0 0 0l4.854 4.854-4.854 4.854c-0 0-0 0-0 0-0.052 0.052-0.090 0.113-0.114 0.178-0.066 0.178-0.029 0.386 0.114 0.529l2.293 2.293c0.143 0.143 0.351 0.181 0.529 0.114 0.065-0.024 0.126-0.062 0.178-0.114 0-0 0-0 0-0l4.854-4.854 4.854 4.854c0 0 0 0 0 0 0.052 0.052 0.113 0.090 0.178 0.114 0.178 0.066 0.386 0.029 0.529-0.114l2.293-2.293c0.143-0.143 0.181-0.351 0.114-0.529-0.024-0.065-0.062-0.126-0.114-0.178z" />
+                    </Canvas>
+                    <TextBlock Text=" Mégsem" />
+                </StackPanel>
+            </Button.Content>
+        </Button>
         <PasswordBox Name="passwordBox1"  HorizontalAlignment="Left" Height="26" Margin="205,50,0,0" VerticalAlignment="Top" Width="150"/>
         <Label Content="Jelszó" HorizontalAlignment="Left" Height="26" Margin="44,50,0,0" VerticalAlignment="Top" Width="108"/>
         <PasswordBox Name="passwordBox2" HorizontalAlignment="Left" Height="26" Margin="205,96,0,0" VerticalAlignment="Top" Width="150"/>

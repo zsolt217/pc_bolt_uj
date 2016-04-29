@@ -5,16 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Szt2_projekt"
         mc:Ignorable="d"
-        Title="Bejelentkezés" Height="250" Width="350">
+        Title="Bejelentkezés" Height="250" Width="350" Icon="Resources/favicon.ico">
     <Grid>
-        <Label x:Name="label" Content="Név:" HorizontalAlignment="Left" Margin="64,68,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label1" Content="Jelszó:" HorizontalAlignment="Left" Margin="64,108,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="felhasznalonevTextBox" HorizontalAlignment="Left" Height="23" Margin="161,71,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" />
-        <PasswordBox x:Name="jelszoPasswordBox" HorizontalAlignment="Left" Height="23" Margin="161,111,0,0"  VerticalAlignment="Top" Width="120" Password=""/>
-        <Button x:Name="bejelentkezesButton" Content="Bejelentkezés" HorizontalAlignment="Left" Margin="64,160,0,0" VerticalAlignment="Top" Width="100" Click="bejelentkezesButton_Click"/>
-        <Button x:Name="regisztracioButton" Content="Regisztráció" HorizontalAlignment="Left" Margin="184,160,0,0" VerticalAlignment="Top" Width="100" Click="regisztracioButton_Click"/>
-        <Label x:Name="label2" Content="Üdvözöljük!" HorizontalAlignment="Left" Height="32" Margin="122,22,0,0" VerticalAlignment="Top" Width="144"/>
-
-
+        <Label x:Name="label" Content="Név:" HorizontalAlignment="Left" Margin="64,86,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label1" Content="Jelszó:" HorizontalAlignment="Left" Margin="64,126,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="felhasznalonevTextBox" HorizontalAlignment="Left" Height="23" Margin="161,89,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" />
+        <PasswordBox x:Name="jelszoPasswordBox" HorizontalAlignment="Left" Height="23" Margin="161,129,0,0"  VerticalAlignment="Top" Width="120" Password=""/>
+        <Button x:Name="bejelentkezesButton" Content="Bejelentkezés" HorizontalAlignment="Left" Margin="64,171,0,0" VerticalAlignment="Top" Width="100" Click="bejelentkezesButton_Click"/>
+        <Button x:Name="regisztracioButton" Content="Regisztráció" HorizontalAlignment="Left" Margin="184,171,0,0" VerticalAlignment="Top" Width="100" Click="regisztracioButton_Click"/>
+        <Canvas x:Name="iconDisplay" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Width="64" Height="64" Margin="64,8,214,147">
+            <Path Fill="#444" Data="M0 4v40h64v-40h-64zM60 40h-56v-32h56v32zM42 48h-20l-2 8-4 4h32l-4-4z" />
+        </Canvas>
+        <Label Content="PC BOLT" Margin="161,19,61,147" FontFamily="Tahoma" FontSize="24" FontWeight="Black" Foreground="#FF444444" />
     </Grid>
 </Window>

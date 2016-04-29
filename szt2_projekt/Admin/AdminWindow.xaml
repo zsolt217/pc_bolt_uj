@@ -5,21 +5,95 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Szt2_projekt"
         mc:Ignorable="d"
-        Title="Adminisztrátor" Height="500" Width="500" Closing="Window_Closing">
-    <Grid>
-        <Label x:Name="label" Content="Felhasználók:" HorizontalAlignment="Left" Margin="39,28,0,0" VerticalAlignment="Top"/>
+        Title="Adminisztrátor" Height="500" Width="500" Closing="Window_Closing" Icon="/Resources/favicon.ico">
+    <Grid RenderTransformOrigin="0.502,0.456">
+        <Label x:Name="label" HorizontalAlignment="Left" Margin="39,28,0,0" VerticalAlignment="Top">
+            <Label.Content>
+                <StackPanel Orientation="Horizontal">
+                    <Canvas x:Name="iconUser" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Width="16" Height="16">
+                        <Path Fill="#444" Data="M9 11.041v-0.825c1.102-0.621 2-2.168 2-3.716 0-2.485 0-4.5-3-4.5s-3 2.015-3 4.5c0 1.548 0.898 3.095 2 3.716v0.825c-3.392 0.277-6 1.944-6 3.959h14c0-2.015-2.608-3.682-6-3.959z" />
+                    </Canvas>
+                    <TextBlock Text=" Felhasználók:" />
+                </StackPanel>
+            </Label.Content>
+        </Label>
         <ListBox x:Name="lBoxAdminFelhasznalok" HorizontalAlignment="Left" Height="76" Margin="39,68,0,0" VerticalAlignment="Top" Width="252"/>
-        <Button x:Name="button" Content="Hozzáadás" HorizontalAlignment="Left" Margin="331,68,0,0" VerticalAlignment="Top" Width="134" Click="button_Click"/>
-        <Button x:Name="button_Copy" Content="Törlés" HorizontalAlignment="Left" Margin="331,122,0,0" VerticalAlignment="Top" Width="134" Click="button_Copy_Click"/>
-        <Button x:Name="button_Copy1" Content="Módosítás" HorizontalAlignment="Left" Margin="331,95,0,0" VerticalAlignment="Top" Width="134" Click="button_Copy1_Click"/>
-        <Label x:Name="label1" Content="Termékek:" HorizontalAlignment="Left" Margin="39,258,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="button" HorizontalAlignment="Left" Margin="331,68,0,0" VerticalAlignment="Top" Width="134" Click="button_Click">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <Canvas x:Name="iconUserPlus" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Width="16" Height="16">
+                        <Path Fill="#444" Data="M6 11.5c0-2.363 1.498-4.383 3.594-5.159 0.254-0.571 0.406-1.206 0.406-1.841 0-2.485 0-4.5-3-4.5s-3 2.015-3 4.5c0 1.548 0.898 3.095 2 3.716v0.825c-3.392 0.277-6 1.944-6 3.959h6.208c-0.135-0.477-0.208-0.98-0.208-1.5z" />
+                        <Path Fill="#444" Data="M11.5 7c-2.485 0-4.5 2.015-4.5 4.5s2.015 4.5 4.5 4.5c2.485 0 4.5-2.015 4.5-4.5s-2.015-4.5-4.5-4.5zM14 12h-2v2h-1v-2h-2v-1h2v-2h1v2h2v1z" />
+                    </Canvas>
+                    <TextBlock Text=" Hozzáadás" />
+                </StackPanel>
+            </Button.Content>
+        </Button>
+        <Button x:Name="button_Copy" HorizontalAlignment="Left" Margin="331,122,0,0" VerticalAlignment="Top" Width="134" Click="button_Copy_Click">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <Canvas x:Name="iconUserMinus" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Width="16" Height="16">
+                        <Path Fill="#444" Data="M6 11.5c0-2.363 1.498-4.383 3.594-5.159 0.254-0.571 0.406-1.206 0.406-1.841 0-2.485 0-4.5-3-4.5s-3 2.015-3 4.5c0 1.548 0.898 3.095 2 3.716v0.825c-3.392 0.277-6 1.944-6 3.959h6.208c-0.135-0.477-0.208-0.98-0.208-1.5z" />
+                        <Path Fill="#444" Data="M11.5 7c-2.485 0-4.5 2.015-4.5 4.5s2.015 4.5 4.5 4.5c2.485 0 4.5-2.015 4.5-4.5s-2.015-4.5-4.5-4.5zM14 12h-5v-1h5v1z" />
+                    </Canvas>
+                    <TextBlock Text=" Törlés" />
+                </StackPanel>
+            </Button.Content>
+        </Button>
+        <Button x:Name="button_Copy1" HorizontalAlignment="Left" Margin="331,95,0,0" VerticalAlignment="Top" Width="134" Click="button_Copy1_Click">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <Canvas x:Name="iconPencil" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Width="16" Height="16">
+                        <Path Fill="#444" Data="M13.5 0c1.381 0 2.5 1.119 2.5 2.5 0 0.563-0.186 1.082-0.5 1.5l-1 1-3.5-3.5 1-1c0.418-0.314 0.937-0.5 1.5-0.5zM1 11.5l-1 4.5 4.5-1 9.25-9.25-3.5-3.5-9.25 9.25zM11.181 5.681l-7 7-0.862-0.862 7-7 0.862 0.862z" />
+                    </Canvas>
+                    <TextBlock Text=" Módosítás" />
+                </StackPanel>
+            </Button.Content>
+        </Button>
+        <Label x:Name="label1" HorizontalAlignment="Left" Margin="39,225,0,0" VerticalAlignment="Top">
+            <Label.Content>
+                <StackPanel Orientation="Horizontal">
+                    <Canvas x:Name="iconCog" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Width="16" Height="16">
+                        <Path Fill="#444" Data="M14.59 9.535c-0.839-1.454-0.335-3.317 1.127-4.164l-1.572-2.723c-0.449 0.263-0.972 0.414-1.529 0.414-1.68 0-3.042-1.371-3.042-3.062h-3.145c0.004 0.522-0.126 1.051-0.406 1.535-0.839 1.454-2.706 1.948-4.17 1.106l-1.572 2.723c0.453 0.257 0.845 0.634 1.123 1.117 0.838 1.452 0.336 3.311-1.12 4.16l1.572 2.723c0.448-0.261 0.967-0.41 1.522-0.41 1.675 0 3.033 1.362 3.042 3.046h3.145c-0.001-0.517 0.129-1.040 0.406-1.519 0.838-1.452 2.7-1.947 4.163-1.11l1.572-2.723c-0.45-0.257-0.839-0.633-1.116-1.113zM8 11.24c-1.789 0-3.24-1.45-3.24-3.24s1.45-3.24 3.24-3.24c1.789 0 3.24 1.45 3.24 3.24s-1.45 3.24-3.24 3.24z" />
+                    </Canvas>
+                    <TextBlock Text=" Termékek:" />
+                </StackPanel>
+            </Label.Content>
+        </Label>
         <ListBox x:Name="lBoxAdminTermekek" ItemsSource="{Binding KivalasztottCsoportTermekei}" SelectedItem="{Binding KivalasztottTipusszam}" HorizontalAlignment="Left" Height="77" Margin="39,289,0,0" VerticalAlignment="Top" Width="252"/>
-        <Button x:Name="button_Copy2" Content="Új termék" HorizontalAlignment="Left" Margin="331,238,0,0" VerticalAlignment="Top" Width="134" Click="button_Copy2_Click"/>
-        <Button x:Name="button_Copy3" Content="Törlés" HorizontalAlignment="Left" Margin="331,316,0,0" VerticalAlignment="Top" Width="134" Click="button_Copy3_Click"/>
-        <Button x:Name="button_Copy4" Content="Módosítás" HorizontalAlignment="Left" Margin="331,289,0,0" VerticalAlignment="Top" Width="134" Click="button_Copy4_Click"/>
+        <Button x:Name="button_Copy2" HorizontalAlignment="Left" Margin="331,260,0,0" VerticalAlignment="Top" Width="134" Click="button_Copy2_Click">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <Canvas x:Name="iconPlus" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Width="16" Height="16">
+                        <Path Fill="#444" Data="M15.5 6h-5.5v-5.5c0-0.276-0.224-0.5-0.5-0.5h-3c-0.276 0-0.5 0.224-0.5 0.5v5.5h-5.5c-0.276 0-0.5 0.224-0.5 0.5v3c0 0.276 0.224 0.5 0.5 0.5h5.5v5.5c0 0.276 0.224 0.5 0.5 0.5h3c0.276 0 0.5-0.224 0.5-0.5v-5.5h5.5c0.276 0 0.5-0.224 0.5-0.5v-3c0-0.276-0.224-0.5-0.5-0.5z" />
+                    </Canvas>
+                    <TextBlock Text=" Új termék" />
+                </StackPanel>
+            </Button.Content>
+        </Button>
+        <Button x:Name="button_Copy3" HorizontalAlignment="Left" Margin="331,316,0,0" VerticalAlignment="Top" Width="134" Click="button_Copy3_Click">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <Canvas x:Name="iconCross" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Width="16" Height="16">
+                        <Path Fill="#444" Data="M15.854 12.854c-0-0-0-0-0-0l-4.854-4.854 4.854-4.854c0-0 0-0 0-0 0.052-0.052 0.090-0.113 0.114-0.178 0.066-0.178 0.028-0.386-0.114-0.529l-2.293-2.293c-0.143-0.143-0.351-0.181-0.529-0.114-0.065 0.024-0.126 0.062-0.178 0.114 0 0-0 0-0 0l-4.854 4.854-4.854-4.854c-0-0-0-0-0-0-0.052-0.052-0.113-0.090-0.178-0.114-0.178-0.066-0.386-0.029-0.529 0.114l-2.293 2.293c-0.143 0.143-0.181 0.351-0.114 0.529 0.024 0.065 0.062 0.126 0.114 0.178 0 0 0 0 0 0l4.854 4.854-4.854 4.854c-0 0-0 0-0 0-0.052 0.052-0.090 0.113-0.114 0.178-0.066 0.178-0.029 0.386 0.114 0.529l2.293 2.293c0.143 0.143 0.351 0.181 0.529 0.114 0.065-0.024 0.126-0.062 0.178-0.114 0-0 0-0 0-0l4.854-4.854 4.854 4.854c0 0 0 0 0 0 0.052 0.052 0.113 0.090 0.178 0.114 0.178 0.066 0.386 0.029 0.529-0.114l2.293-2.293c0.143-0.143 0.181-0.351 0.114-0.529-0.024-0.065-0.062-0.126-0.114-0.178z" />
+                    </Canvas>
+                    <TextBlock Text=" Törlés" />
+                </StackPanel>
+            </Button.Content>
+        </Button>
+        <Button x:Name="button_Copy4" HorizontalAlignment="Left" Margin="331,289,0,0" VerticalAlignment="Top" Width="134" Click="button_Copy4_Click">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <Canvas x:Name="iconPencil2" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Width="16" Height="16">
+                        <Path Fill="#444" Data="M13.5 0c1.381 0 2.5 1.119 2.5 2.5 0 0.563-0.186 1.082-0.5 1.5l-1 1-3.5-3.5 1-1c0.418-0.314 0.937-0.5 1.5-0.5zM1 11.5l-1 4.5 4.5-1 9.25-9.25-3.5-3.5-9.25 9.25zM11.181 5.681l-7 7-0.862-0.862 7-7 0.862 0.862z" />
+                    </Canvas>
+                    <TextBlock Text=" Módosítás" />
+                </StackPanel>
+            </Button.Content>
+        </Button>
         <Button x:Name="button1" Click="Kijelentkezes_Click" Content="Kijelentkezés" HorizontalAlignment="Left" Margin="331,405,0,0" VerticalAlignment="Top" Width="134" Height="35"/>
-        <Label x:Name="label1_Copy" Content="Termék típusa:" HorizontalAlignment="Left" Margin="39,234,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="cBoxTermekTipus" ItemsSource="{Binding Csoportok}" SelectedItem="{Binding KivalasztottCsoport}" HorizontalAlignment="Left" Margin="147,238,0,0" VerticalAlignment="Top" Width="144"/>
+        <Label x:Name="label1_Copy" Content="Termék típusa:" HorizontalAlignment="Left" Margin="39,256,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="cBoxTermekTipus" ItemsSource="{Binding Csoportok}" SelectedItem="{Binding KivalasztottCsoport}" HorizontalAlignment="Left" Margin="147,260,0,0" VerticalAlignment="Top" Width="144"/>
 
     </Grid>
 </Window>
