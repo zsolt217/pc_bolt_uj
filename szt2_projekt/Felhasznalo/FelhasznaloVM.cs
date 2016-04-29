@@ -7,7 +7,6 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
-using Szt2_projekt.Felhasznalo;
 
 
 namespace Szt2_projekt
@@ -301,7 +300,7 @@ namespace Szt2_projekt
         public ObservableCollection<KEDVENCEK> Kedvencek
         {
             get { return kedvencek; }
-            set { kedvencek = value; } //OnPropertyChanged(); }
+            set { kedvencek = value; } 
         }
 
         public void KedvencBetolt()
@@ -315,6 +314,16 @@ namespace Szt2_projekt
             OnPropertyChanged("Kedvencek");
         }
 
+        #endregion
+
+        #region Rendelesek
+        List<RENDELESEK> rendelesek;
+
+        public List<RENDELESEK> Rendelesek
+        {
+            get { return rendelesek; }
+            set { rendelesek = value; }
+        }
         #endregion
     }
 }

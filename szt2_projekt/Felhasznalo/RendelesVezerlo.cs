@@ -36,7 +36,6 @@ namespace Szt2_projekt
                 }
                 else
                 {
-                    //Marcinak lesz hasznos
                     return null;
                 }
             }

@@ -14,7 +14,7 @@ namespace Szt2_projekt
         KompatibilitasVizsgalo vizsgalo;
         decimal felhasznaloid;
         RendelesVezerlo rendelesvezerlo;
-        //KedvencVezerlo kedvencvezerlo;
+        KedvencVezerlo kedvencvezerlo;
         public FelhasznaloBSL(decimal felhasznaloid, FelhasznaloVM Felhasznalovm)
         {
             VM = Felhasznalovm;
@@ -23,9 +23,9 @@ namespace Szt2_projekt
             FelhasznaloAdatbetoltesVMbe(felhasznaloid);
             vizsgalo = new KompatibilitasVizsgalo(VM); //feliratkozik az ablak termékváltozás eseményére
             TermekekBetoltese();
-            
+            RendelesBetoltesVMbe();
             rendelesvezerlo = new RendelesVezerlo(Rang.Felhasznalo);
-            //kedvencvezerlo = new KedvencVezerlo();
+            kedvencvezerlo = new KedvencVezerlo();
         }
         void FelhasznaloAdatbetoltesVMbe(decimal felhasznaloid)//felhasználóvm elemeinek feltöltése
         {
@@ -95,10 +95,6 @@ namespace Szt2_projekt
             }
             else
             {
-                decimal osszFogyasztas = VM.SelectedCpu.FOGYASZTAS + VM.SelectedGpu.FOGYASZTAS;
-                if (VM.SelectedAlaplap.CPUFOGLALAT.Equals(VM.SelectedCpu.CPUFOGLALAT) &&
-        VM.SelectedAlaplap.MEMORIATIPUS.Equals(VM.SelectedMemoria.MEMORIATIPUS) && VM.SelectedHaz.MERETSZABVANY.Equals(VM.SelectedAlaplap.MERETSZABVANY) &&
-        VM.SelectedTap.TELJESITMENY >= osszFogyasztas)
                 {
                     var p = DB.RENDELESEK.OrderByDescending(x => x.RENDELES_ID).FirstOrDefault();
                     int newId = (null == p ? 0 : (int)p.RENDELES_ID) + 1;
@@ -116,10 +112,6 @@ namespace Szt2_projekt
                         TAP_ID = VM.SelectedTap.TAP_ID
                     };
                     rendelesvezerlo.RendelesMentes(uj);
-                }
-                else
-                {
-                    MessageBox.Show("Elbaszott vmit a Zsolti a kompatibilitasvizsgalatnal.");
                 }
             }
         }
@@ -164,45 +156,36 @@ namespace Szt2_projekt
             }
             else
             {
-                decimal osszFogyasztas = VM.SelectedCpu.FOGYASZTAS + VM.SelectedGpu.FOGYASZTAS;
-                if (VM.SelectedAlaplap.CPUFOGLALAT.Equals(VM.SelectedCpu.CPUFOGLALAT) &&
-        VM.SelectedAlaplap.MEMORIATIPUS.Equals(VM.SelectedMemoria.MEMORIATIPUS) && VM.SelectedHaz.MERETSZABVANY.Equals(VM.SelectedAlaplap.MERETSZABVANY) &&
-        VM.SelectedTap.TELJESITMENY >= osszFogyasztas)
+                var p = DB.KEDVENCEK.OrderByDescending(x => x.KEDVENCEK_ID).FirstOrDefault();
+                int newId = (null == p ? 0 : (int)p.KEDVENCEK_ID) + 1;
+                KEDVENCEK uj = new KEDVENCEK
                 {
-                    var p = DB.KEDVENCEK.OrderByDescending(x => x.KEDVENCEK_ID).FirstOrDefault();
-                    int newId = (null == p ? 0 : (int)p.KEDVENCEK_ID) + 1;
-                    KEDVENCEK uj = new KEDVENCEK
-                    {
-                        ALAPLAP_ID = VM.SelectedAlaplap.ALAPLAP_ID,
-                        CPU_ID = VM.SelectedCpu.CPU_ID,
-                        FELHASZNALO_ID = felhasznaloid,
-                        GPU_ID = VM.SelectedGpu.GPU_ID,
-                        HAZ_ID = VM.SelectedHaz.HAZ_ID,
-                        HDD_ID = VM.SelectedHdd.HDD_ID,
-                        MEMORIA_ID = VM.SelectedMemoria.MEMORIA_ID,
-                        SSD_ID = (VM.SelectedSsd.TIPUSSZAM.Contains("*") ? (decimal?)null : VM.SelectedSsd.SSD_ID),
-                        KEDVENCEK_ID = newId,
-                        TAP_ID = VM.SelectedTap.TAP_ID
-                    };
-                    try
-                    {
-                        DB.KEDVENCEK.Add(uj);
-                        DB.SaveChanges();
-                        MessageBox.Show("Kedvencek közé mentve");
+                    ALAPLAP_ID = VM.SelectedAlaplap.ALAPLAP_ID,
+                    CPU_ID = VM.SelectedCpu.CPU_ID,
+                    FELHASZNALO_ID = felhasznaloid,
+                    GPU_ID = VM.SelectedGpu.GPU_ID,
+                    HAZ_ID = VM.SelectedHaz.HAZ_ID,
+                    HDD_ID = VM.SelectedHdd.HDD_ID,
+                    MEMORIA_ID = VM.SelectedMemoria.MEMORIA_ID,
+                    SSD_ID = (VM.SelectedSsd.TIPUSSZAM.Contains("*") ? (decimal?)null : VM.SelectedSsd.SSD_ID),
+                    KEDVENCEK_ID = newId,
+                    TAP_ID = VM.SelectedTap.TAP_ID
+                };
+                kedvencvezerlo.MentesKedvencekbe(felhasznaloid, uj);
+                //try
+                //{
+                //    DB.KEDVENCEK.Add(uj);
+                //    DB.SaveChanges();
+                //    MessageBox.Show("Kedvencek közé mentve");
 
-                    }
-                    catch (Exception hiba)
-                    {
-                        Megosztott.Logolas(hiba.InnerException.Message);
-                        MessageBox.Show("Adatbázishiba, nem sikerült rögzíteni.");
+                //}
+                //catch (Exception hiba)
+                //{
+                //    Megosztott.Logolas(hiba.InnerException.Message);
+                //    MessageBox.Show("Adatbázishiba, nem sikerült rögzíteni.");
 
 
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Elbaszott vmit a Zsolti a kompatibilitasvizsgalatnal.");
-                }
+                //}
             }
         }
 
@@ -223,6 +206,11 @@ namespace Szt2_projekt
             VM.SelectedTap = VM.Tapok.Where(x => x.TAP_ID == selectKedvenc.TAP.TAP_ID).Single();
 
             VM.SelectedHaz = VM.Hazak.Where(x => x.HAZ_ID == selectKedvenc.HAZ.HAZ_ID).Single();
+        }
+
+        private void RendelesBetoltesVMbe()
+        {
+            VM.Rendelesek = DB.RENDELESEK.Where(x=>x.FELHASZNALO_ID==felhasznaloid).ToList();
         }
     }
 }

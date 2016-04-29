@@ -15,7 +15,6 @@ namespace Szt2_projekt
             bool latta_e = (bool)value;
             if (latta_e) return Brushes.White;
             else return Brushes.Red;
-
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)

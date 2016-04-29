@@ -65,9 +65,7 @@ namespace Szt2_projekt
                 if (zz.Any()) // zz.ToList().Count > 0
                     return z.First();
             }
-
             return null;
-
         }
 
     }
