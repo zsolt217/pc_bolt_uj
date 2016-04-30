@@ -21,7 +21,7 @@
                     </StackPanel>
                 </TabItem.Header>
                 <Grid >
-                    <Label x:Name="label" Content="Termékek" HorizontalAlignment="Left" Margin="47,39,0,0" VerticalAlignment="Top">
+                    <Label x:Name="label" Content="Termékek" HorizontalAlignment="Left" Margin="47,39,0,0" VerticalAlignment="Top" FontWeight="SemiBold">
                     </Label>
                     <Separator Margin="47,57,349,401"/>
                     <ListBox x:Name="lBoxAdminTermekek" ItemsSource="{Binding KivalasztottCsoportTermekei}" SelectedItem="{Binding KivalasztottTipusszam}" HorizontalAlignment="Left" Height="144" Margin="47,120,0,0" VerticalAlignment="Top" Width="249" />
@@ -71,7 +71,7 @@
                     </StackPanel>
                 </TabItem.Header>
                 <Grid>
-                    <Label Content="Megrendelések" HorizontalAlignment="Left" Margin="47,30,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Megrendelések" HorizontalAlignment="Left" Margin="47,30,0,0" VerticalAlignment="Top" FontWeight="SemiBold"/>
                     <Separator Margin="47,50,349,414"/>
                     <ListBox x:Name="listboxRendelesek" ItemsSource="{Binding Rendelesek}" SelectedItem="{Binding Selectedrendeles}" HorizontalAlignment="Left" Height="144" Margin="47,75,0,0" VerticalAlignment="Top" Width="249">
                         <ListBox.ItemTemplate>
@@ -129,8 +129,8 @@
                             </StackPanel>
                         </Button.Content>
                     </Button>
-                    <Label Content="Válasz:" HorizontalAlignment="Left" Margin="258,175,0,0" VerticalAlignment="Top" Width="56"/>
-                    <Label Content="Bejövő üzenetek" HorizontalAlignment="Left" Margin="10,6,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Válasz:" HorizontalAlignment="Left" Margin="258,175,0,0" VerticalAlignment="Top" Width="56" FontWeight="SemiBold"/>
+                    <Label Content="Bejövő üzenetek" HorizontalAlignment="Left" Margin="10,6,0,0" VerticalAlignment="Top" FontWeight="SemiBold"/>
                     <Separator Margin="10,26,412,436"/>
                     <Separator Margin="258,189,19,264"/>
                     <TextBlock Margin="258,53,0,0" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding UzenetSzoveg }" VerticalAlignment="Top" Width="368" Height="118"/>
