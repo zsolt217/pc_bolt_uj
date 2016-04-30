@@ -7,16 +7,17 @@
         mc:Ignorable="d"
         Title="Adminisztrátor" Height="500" Width="500" Closing="Window_Closing" Icon="/Resources/favicon.ico">
     <Grid RenderTransformOrigin="0.502,0.456">
-        <Label x:Name="label" HorizontalAlignment="Left" Margin="39,28,0,0" VerticalAlignment="Top">
+        <Label x:Name="label" HorizontalAlignment="Left" Margin="39,23,0,0" VerticalAlignment="Top">
             <Label.Content>
                 <StackPanel Orientation="Horizontal">
                     <Canvas x:Name="iconUser" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Width="16" Height="16">
                         <Path Fill="#444" Data="M9 11.041v-0.825c1.102-0.621 2-2.168 2-3.716 0-2.485 0-4.5-3-4.5s-3 2.015-3 4.5c0 1.548 0.898 3.095 2 3.716v0.825c-3.392 0.277-6 1.944-6 3.959h14c0-2.015-2.608-3.682-6-3.959z" />
                     </Canvas>
-                    <TextBlock Text=" Felhasználók:" />
+                    <TextBlock Text=" Felhasználók" />
                 </StackPanel>
             </Label.Content>
         </Label>
+        <Separator Margin="39,41,191,406"/>
         <ListBox x:Name="lBoxAdminFelhasznalok" HorizontalAlignment="Left" Height="76" Margin="39,68,0,0" VerticalAlignment="Top" Width="252"/>
         <Button x:Name="button" HorizontalAlignment="Left" Margin="331,68,0,0" VerticalAlignment="Top" Width="134" Click="button_Click">
             <Button.Content>
@@ -50,16 +51,17 @@
                 </StackPanel>
             </Button.Content>
         </Button>
-        <Label x:Name="label1" HorizontalAlignment="Left" Margin="39,225,0,0" VerticalAlignment="Top">
+        <Label x:Name="label1" HorizontalAlignment="Left" Margin="39,213,0,0" VerticalAlignment="Top">
             <Label.Content>
                 <StackPanel Orientation="Horizontal">
                     <Canvas x:Name="iconCog" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Width="16" Height="16">
                         <Path Fill="#444" Data="M14.59 9.535c-0.839-1.454-0.335-3.317 1.127-4.164l-1.572-2.723c-0.449 0.263-0.972 0.414-1.529 0.414-1.68 0-3.042-1.371-3.042-3.062h-3.145c0.004 0.522-0.126 1.051-0.406 1.535-0.839 1.454-2.706 1.948-4.17 1.106l-1.572 2.723c0.453 0.257 0.845 0.634 1.123 1.117 0.838 1.452 0.336 3.311-1.12 4.16l1.572 2.723c0.448-0.261 0.967-0.41 1.522-0.41 1.675 0 3.033 1.362 3.042 3.046h3.145c-0.001-0.517 0.129-1.040 0.406-1.519 0.838-1.452 2.7-1.947 4.163-1.11l1.572-2.723c-0.45-0.257-0.839-0.633-1.116-1.113zM8 11.24c-1.789 0-3.24-1.45-3.24-3.24s1.45-3.24 3.24-3.24c1.789 0 3.24 1.45 3.24 3.24s-1.45 3.24-3.24 3.24z" />
                     </Canvas>
-                    <TextBlock Text=" Termékek:" />
+                    <TextBlock Text=" Termékek" />
                 </StackPanel>
             </Label.Content>
         </Label>
+        <Separator Margin="39,231,191,214"/>
         <ListBox x:Name="lBoxAdminTermekek" ItemsSource="{Binding KivalasztottCsoportTermekei}" SelectedItem="{Binding KivalasztottTipusszam}" HorizontalAlignment="Left" Height="77" Margin="39,289,0,0" VerticalAlignment="Top" Width="252"/>
         <Button x:Name="button_Copy2" HorizontalAlignment="Left" Margin="331,260,0,0" VerticalAlignment="Top" Width="134" Click="button_Copy2_Click">
             <Button.Content>

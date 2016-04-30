@@ -25,15 +25,15 @@
                     <Label  Content="Telefonszám:" HorizontalAlignment="Left" Margin="10,174,0,0" VerticalAlignment="Top"/>
                     <Label Content="Cím:" HorizontalAlignment="Left" Margin="10,213,0,0" VerticalAlignment="Top"/>
                     <Label  Content="Email:" HorizontalAlignment="Left" Margin="10,252,0,0" VerticalAlignment="Top"/>
-                    <Label  Content="{Binding Felhasznalonev}" HorizontalAlignment="Left"  Margin="184,59,0,0" VerticalAlignment="Top" Width="202"/>
-                    <Label Content="{Binding Telefonszam}" HorizontalAlignment="Left" Margin="184,174,0,0" VerticalAlignment="Top" Width="226"/>
-                    <Label Content="{Binding Cim}" HorizontalAlignment="Left" Margin="184,213,0,0" VerticalAlignment="Top" Width="202"/>
-                    <Label  Content="{Binding Email}" HorizontalAlignment="Left" Margin="184,252,0,0" VerticalAlignment="Top" Width="202"/>
+                    <Label  Content="{Binding Felhasznalonev}" HorizontalAlignment="Left"  Margin="141,59,0,0" VerticalAlignment="Top" Width="202"/>
+                    <Label Content="{Binding Telefonszam}" HorizontalAlignment="Left" Margin="141,174,0,0" VerticalAlignment="Top" Width="202"/>
+                    <Label Content="{Binding Cim}" HorizontalAlignment="Left" Margin="141,213,0,0" VerticalAlignment="Top" Width="202"/>
+                    <Label  Content="{Binding Email}" HorizontalAlignment="Left" Margin="141,252,0,0" VerticalAlignment="Top" Width="202"/>
                     <Label  Content="Vezetéknév:" HorizontalAlignment="Left" Margin="10,97,0,0" VerticalAlignment="Top"/>
                     <Label Content="Keresztnév:" HorizontalAlignment="Left" Margin="10,136,0,0" VerticalAlignment="Top"/>
-                    <Label  Content="{Binding Vezeteknev}" HorizontalAlignment="Left" Margin="184,97,0,0" VerticalAlignment="Top" Width="202"/>
-                    <Label  Content="{Binding Keresztnev}" HorizontalAlignment="Left" Margin="184,136,0,0" VerticalAlignment="Top" Width="202"/>
-                    <Button Click="FelhAdatModosit_Click" Width="175" Height="40" Margin="239,295,243,103">
+                    <Label  Content="{Binding Vezeteknev}" HorizontalAlignment="Left" Margin="141,97,0,0" VerticalAlignment="Top" Width="202"/>
+                    <Label  Content="{Binding Keresztnev}" HorizontalAlignment="Left" Margin="141,136,0,0" VerticalAlignment="Top" Width="202"/>
+                    <Button Click="FelhAdatModosit_Click" Margin="141,293,394,126">
                         <Button.Content>
                             <StackPanel Orientation="Horizontal">
                                 <Canvas x:Name="iconPencil" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Width="16" Height="16">
@@ -43,8 +43,11 @@
                             </StackPanel>
                         </Button.Content>
                     </Button>
-                    <ListBox ItemsSource="{Binding Rendelesek}" HorizontalAlignment="Left" Height="226" Margin="440,59,0,0" VerticalAlignment="Top" Width="232"/>
-                    <Label Content="Leadott rendelések:" HorizontalAlignment="Left" Height="32" Margin="440,22,0,0" VerticalAlignment="Top" Width="144"/>
+                    <Separator Margin="10,36,343,392"/>
+                    <Separator Margin="383,36,14,392"/>
+                    <ListBox ItemsSource="{Binding Rendelesek}" HorizontalAlignment="Left" Height="226" Margin="383,59,0,0" VerticalAlignment="Top" Width="289"/>
+                    <Label Content="Leadott rendelések" HorizontalAlignment="Left" Height="32" Margin="383,18,0,0" VerticalAlignment="Top" Width="144" FontWeight="SemiBold"/>
+                    <Label Content="Személyes adatok" HorizontalAlignment="Left" Margin="10,18,0,0" VerticalAlignment="Top" FontWeight="SemiBold"/>
                 </Grid>
             </TabItem>
 
@@ -199,7 +202,7 @@
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-                    <TextBlock HorizontalAlignment="Left" Margin="302,46,0,0" TextWrapping="Wrap" Text="{Binding UzenetSzoveg }" VerticalAlignment="Top" Width="374" Height="135"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="302,46,0,0" TextWrapping="Wrap" Text="{Binding UzenetSzoveg }" VerticalAlignment="Top" Width="374" Height="125"/>
                     <TextBox x:Name="kapcsolattBox" Text="{Binding Kimenouzenet}" Margin="302,217,10,71" AcceptsReturn="True" TextWrapping="Wrap" />
                     <Button x:Name="kuldesButton" Margin="449,385,141,30" Click="kuldesButton_Click">
                         <Button.Content>
@@ -211,9 +214,10 @@
                             </StackPanel>
                         </Button.Content>
                     </Button>
-                    <Label Content="Bejövő üzenetek:" HorizontalAlignment="Left" Margin="10,15,0,0" VerticalAlignment="Top"/>
-                    <Label Content="Üzenet:" HorizontalAlignment="Left" Margin="302,186,0,0" VerticalAlignment="Top"/>
-
+                    <Label Content="Bejövő üzenetek" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top"/>
+                    <Separator Margin="10,23,408,405"/>
+                    <Label Content="Üzenet" HorizontalAlignment="Left" Margin="302,171,0,0" VerticalAlignment="Top"/>
+                    <Separator Margin="302,189,10,239"/>
                 </Grid>
             </TabItem>
         </TabControl>

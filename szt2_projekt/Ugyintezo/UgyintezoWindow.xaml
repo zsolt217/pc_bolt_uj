@@ -21,8 +21,9 @@
                     </StackPanel>
                 </TabItem.Header>
                 <Grid >
-                    <Label x:Name="label" Content="Termékek:" HorizontalAlignment="Left" Margin="47,45,0,0" VerticalAlignment="Top">                      
+                    <Label x:Name="label" Content="Termékek" HorizontalAlignment="Left" Margin="47,39,0,0" VerticalAlignment="Top">
                     </Label>
+                    <Separator Margin="47,57,349,401"/>
                     <ListBox x:Name="lBoxAdminTermekek" ItemsSource="{Binding KivalasztottCsoportTermekei}" SelectedItem="{Binding KivalasztottTipusszam}" HorizontalAlignment="Left" Height="144" Margin="47,120,0,0" VerticalAlignment="Top" Width="249" />
                     <Button x:Name="button1" HorizontalAlignment="Left" Margin="336,141,0,0" VerticalAlignment="Top" Width="124" Click="button1_Click">
                         <Button.Content>
@@ -70,7 +71,8 @@
                     </StackPanel>
                 </TabItem.Header>
                 <Grid>
-                    <Label  Content="Megrendelések:" HorizontalAlignment="Left" Margin="47,37,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Megrendelések" HorizontalAlignment="Left" Margin="47,30,0,0" VerticalAlignment="Top"/>
+                    <Separator Margin="47,50,349,414"/>
                     <ListBox x:Name="listboxRendelesek" ItemsSource="{Binding Rendelesek}" SelectedItem="{Binding Selectedrendeles}" HorizontalAlignment="Left" Height="144" Margin="47,75,0,0" VerticalAlignment="Top" Width="249">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
@@ -106,7 +108,7 @@
                     </StackPanel>
                 </TabItem.Header>
                 <Grid>
-                    <ListBox Margin="10,37,412,10" ItemsSource="{Binding Bejovok}" SelectedItem="{Binding SelectedUzenet}" ScrollViewer.HorizontalScrollBarVisibility="Hidden" >
+                    <ListBox Margin="10,53,412,10" ItemsSource="{Binding Bejovok}" SelectedItem="{Binding SelectedUzenet}" ScrollViewer.HorizontalScrollBarVisibility="Hidden" >
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid Height="40" Background="{Binding LATTA_E, Converter={StaticResource Converter}}">
@@ -116,7 +118,7 @@
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-                    <TextBox Text="{Binding Kimenouzenet}" HorizontalAlignment="Left" Height="165" Margin="238,225,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="388" AcceptsReturn="True"/>
+                    <TextBox Text="{Binding Kimenouzenet}" HorizontalAlignment="Left" Height="165" Margin="258,225,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="368" AcceptsReturn="True"/>
                     <Button HorizontalAlignment="Left" Margin="392,395,0,0" VerticalAlignment="Top" Width="90" Click="ValaszKuldese_Click">
                         <Button.Content>
                             <StackPanel Orientation="Horizontal">
@@ -127,9 +129,11 @@
                             </StackPanel>
                         </Button.Content>
                     </Button>
-                    <Label Content="Válasz:" HorizontalAlignment="Left" Margin="238,192,0,0" VerticalAlignment="Top" Width="56"/>
-                    <Label Content="Bejövő üzenetek:" HorizontalAlignment="Left" Margin="10,6,0,0" VerticalAlignment="Top"/>
-                    <TextBlock Margin="238,37,0,0" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding UzenetSzoveg }" VerticalAlignment="Top" Width="388" Height="150"/>
+                    <Label Content="Válasz:" HorizontalAlignment="Left" Margin="258,175,0,0" VerticalAlignment="Top" Width="56"/>
+                    <Label Content="Bejövő üzenetek" HorizontalAlignment="Left" Margin="10,6,0,0" VerticalAlignment="Top"/>
+                    <Separator Margin="10,26,412,436"/>
+                    <Separator Margin="258,189,19,264"/>
+                    <TextBlock Margin="258,53,0,0" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding UzenetSzoveg }" VerticalAlignment="Top" Width="368" Height="118"/>
                 </Grid>
             </TabItem>
         </TabControl>
