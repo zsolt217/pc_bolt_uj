@@ -39,7 +39,8 @@ namespace Szt2_projekt
               //  {
               //      DB.KEDVENCEK.Attach(torlendo);
               //  }
-                DB.KEDVENCEK.Remove(torlendo);
+                KEDVENCEK kedv = DB.KEDVENCEK.Single(x => x.KEDVENCEK_ID == torlendo.KEDVENCEK_ID);
+                DB.KEDVENCEK.Remove(kedv);
                 DB.SaveChanges();
                 return true;
             }

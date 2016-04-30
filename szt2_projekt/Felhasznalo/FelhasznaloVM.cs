@@ -300,7 +300,7 @@ namespace Szt2_projekt
         public ObservableCollection<KEDVENCEK> Kedvencek
         {
             get { return kedvencek; }
-            set { kedvencek = value; } 
+            set { kedvencek = value; OnPropertyChanged(); } 
         }
 
         public void KedvencBetolt()
