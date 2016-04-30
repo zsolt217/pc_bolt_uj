@@ -201,7 +201,8 @@ namespace Szt2_projekt
 
             VM.SelectedHdd = VM.Hddk.Where(x => x.HDD_ID == selectKedvenc.HDD.HDD_ID).Single();
 
-            VM.SelectedSsd = VM.Ssdk.Where(x => x.SSD_ID == selectKedvenc.SSD.SSD_ID).Single();
+            if(selectKedvenc.SSD == null)  VM.SelectedSsd = VM.Ssdk.Where(x => x.TIPUSSZAM.Contains("*")).Single(); 
+            else VM.SelectedSsd = VM.Ssdk.Where(x => x.SSD_ID == selectKedvenc.SSD.SSD_ID).Single();
 
             VM.SelectedTap = VM.Tapok.Where(x => x.TAP_ID == selectKedvenc.TAP.TAP_ID).Single();
 

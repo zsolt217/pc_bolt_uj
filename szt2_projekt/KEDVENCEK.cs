@@ -11,7 +11,7 @@ namespace Szt2_projekt
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class KEDVENCEK
     {
         public decimal KEDVENCEK_ID { get; set; }
@@ -25,7 +25,7 @@ namespace Szt2_projekt
         public Nullable<decimal> SSD_ID { get; set; }
         public decimal HAZ_ID { get; set; }
         public string ALLAPOT { get; set; }
-    
+
         public virtual ALAPLAP ALAPLAP { get; set; }
         public virtual CPU CPU { get; set; }
         public virtual FELHASZNALO FELHASZNALO { get; set; }
@@ -38,12 +38,12 @@ namespace Szt2_projekt
 
         public override string ToString()
         {
-            if (SSD == null)
-            {
-                SSD = new SSD();
-            }
+            //if (SSD == null)
+            //{
+            //    SSD = new SSD();
+            //}
             return "Alaplap: " + ALAPLAP.TIPUSSZAM + "\nCPU: " + CPU.TIPUSSZAM + "\nGPU: " + GPU.TIPUSSZAM + "\nHáz: " + HAZ.TIPUSSZAM +
-                "\nHDD: " + HDD.TIPUSSZAM + "\nSSD: " + SSD.TIPUSSZAM + "\nMemória: " + MEMORIA.TIPUSSZAM + "\nTáp: " + TAP.TIPUSSZAM;
+                "\nHDD: " + HDD.TIPUSSZAM + "\nSSD: " + (SSD == null ? String.Empty : SSD.TIPUSSZAM) + "\nMemória: " + MEMORIA.TIPUSSZAM + "\nTáp: " + TAP.TIPUSSZAM;
         }
     }
 }
