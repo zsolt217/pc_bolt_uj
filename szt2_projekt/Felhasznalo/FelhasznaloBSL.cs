@@ -208,9 +208,23 @@ namespace Szt2_projekt
             VM.SelectedHaz = VM.Hazak.Where(x => x.HAZ_ID == selectKedvenc.HAZ.HAZ_ID).Single();
         }
 
+        public void KedvencTorles()
+        {
+            if (VM.SelectedKedvenc != null && kedvencvezerlo.KedvencTorles(VM.SelectedKedvenc))
+            {
+                VM.KedvencBetolt();
+                MessageBox.Show("Sikeres törlés.");
+
+            }
+            else
+            {
+                MessageBox.Show("Sikertelen törlés.");
+            }
+        }
+
         private void RendelesBetoltesVMbe()
         {
-            VM.Rendelesek = DB.RENDELESEK.Where(x=>x.FELHASZNALO_ID==felhasznaloid).ToList();
+            VM.Rendelesek = DB.RENDELESEK.Where(x => x.FELHASZNALO_ID == felhasznaloid).ToList();
         }
     }
 }

@@ -138,7 +138,15 @@ namespace Szt2_projekt
 
                 FELHASZNALO f = q.First();
                 admin.FelhasznaloModositas(f);
-                ab.SaveChanges();
+                try
+                {
+                    ab.SaveChanges();
+                }
+                catch (Exception hiba)
+                {
+                    Megosztott.Logolas(hiba.InnerException.Message);
+                }
+
                 Frissit();
             }
 

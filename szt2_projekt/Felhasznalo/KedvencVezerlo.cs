@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Diagnostics;
+using System.Data.Entity;
 
 namespace Szt2_projekt
 {
@@ -22,6 +24,31 @@ namespace Szt2_projekt
             ObservableCollection<KEDVENCEK> aktFelhasznaloKedvencei = new ObservableCollection<KEDVENCEK>(DB.KEDVENCEK.Where(x => x.FELHASZNALO_ID == felh_id).ToList());
             return aktFelhasznaloKedvencei;
         }
+        public bool KedvencTorles(KEDVENCEK torlendo)
+        {
+            try
+            {
+                ; var list = DB.KEDVENCEK.ToList();
+                foreach (var item in list)
+                {
+                    Debug.WriteLine(item.KEDVENCEK_ID);
+                }
+              //  DB = new AdatbazisEntities();
+                var entry= DB.Entry(torlendo);//ezt a részt stack overflow-n adták a remove hibának a megoldására, most már itt is elszáll
+                if (entry.State==EntityState.Detached)
+                {
+                    DB.KEDVENCEK.Attach(torlendo);
+                }
+                DB.KEDVENCEK.Remove(torlendo);
+                DB.SaveChanges();
+                return true;
+            }
+            catch (Exception hiba)
+            {
+                Megosztott.Logolas(hiba.InnerException.Message);
+                return false;                
+            }
+        }
 
         public void MentesKedvencekbe(decimal felh_id, KEDVENCEK leendoKedvenc)
         {
@@ -30,9 +57,9 @@ namespace Szt2_projekt
                 ObservableCollection<KEDVENCEK> aktFelhasznaloKedvencei = new ObservableCollection<KEDVENCEK>(DB.KEDVENCEK.Where(x => x.FELHASZNALO_ID == felh_id).ToList());
 
                 //Ha a felhasználónak még egyetlen kedvence sincsen.
-                if (aktFelhasznaloKedvencei.Count == 0)
+                if (DB.KEDVENCEK.ToList().Count == 0)
                 {
-                    DB.KEDVENCEK.Add(new KEDVENCEK
+                   KEDVENCEK uj=new KEDVENCEK
                     {
                         KEDVENCEK_ID = 1,
                         FELHASZNALO_ID = felh_id,
@@ -44,7 +71,8 @@ namespace Szt2_projekt
                         SSD_ID = leendoKedvenc.SSD_ID,
                         HAZ_ID = leendoKedvenc.HAZ_ID,
                         TAP_ID = leendoKedvenc.TAP_ID
-                    });
+                    };
+                   DB.KEDVENCEK.Add(uj);
                 }
                 else //Ha vannak kedvencei megvizsgáljuk, hogy van e már ilyen kedvenc 
                 {

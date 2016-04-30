@@ -168,7 +168,7 @@
                             </StackPanel>
                         </Button.Content>
                     </Button>
-                    <Button x:Name="kedvencModositasButton" HorizontalAlignment="Left" Margin="475,383,0,0" VerticalAlignment="Top" Width="100" Click="kedvencModositasButton_Click">
+                    <Button x:Name="kedvencModositasButton" HorizontalAlignment="Left" Margin="305,383,0,0" VerticalAlignment="Top" Width="100" Click="kedvencModositasButton_Click">
                         <Button.Content>
                             <StackPanel Orientation="Horizontal">
                                 <Canvas x:Name="iconCog2" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Width="16" Height="16">
@@ -179,6 +179,7 @@
                         </Button.Content>
                     </Button>
                     <ListBox x:Name="listBox" ItemsSource="{Binding Kedvencek}" SelectedItem="{Binding SelectedKedvenc}" HorizontalAlignment="Left" Height="318" Margin="118,10,0,0" VerticalAlignment="Top" Width="457"/>
+                    <Button Click="KedvencTorles_Click" Content="Törlés" HorizontalAlignment="Left" Height="22" Margin="478,383,0,0" VerticalAlignment="Top" Width="97"/>
                 </Grid>
             </TabItem>
 

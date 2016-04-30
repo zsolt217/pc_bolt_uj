@@ -537,5 +537,10 @@ namespace Szt2_projekt
             KonfiguracioTabItem.IsSelected = true;
             BS.KedvencModositas((KEDVENCEK)listBox.SelectedItem);
         }
+
+        private void KedvencTorles_Click(object sender, RoutedEventArgs e)
+        {
+            BS.KedvencTorles();
+        }
     }
 }
