@@ -58,11 +58,11 @@ namespace Szt2_projekt
             db = new AdatbazisEntities();
             var z = db.FELHASZNALO.Where(f => f.NEV == felhasznalonev.ToUpper());
 
-            if (z.Any()) // z.ToList().Count > 0
+            if (z.Any())
             {
                 var zz = z.Where(f => f.JELSZO == jelszo.ToUpper());
 
-                if (zz.Any()) // zz.ToList().Count > 0
+                if (zz.Any()) 
                     return z.First();
             }
             return null;

@@ -44,14 +44,7 @@ namespace Szt2_projekt
             string bevittFelhNev = felhasznalonevTextBox.Text;
             string bevittJelszo = jelszoPasswordBox.Password;
 
-            if (bevittFelhNev == "admin" && bevittJelszo == "admin")
-            {
-                AdminWindow adminablak = new AdminWindow();
-                adminablak.Show();
-
-                this.Close();
-            }
-            else if (bevittFelhNev != "" && bevittJelszo != "")
+            if (bevittFelhNev != "" && bevittJelszo != "")
             {
                 if (bejelentkezo.Bejelentkezes(bevittFelhNev, bevittJelszo))
                     this.Close();

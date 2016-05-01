@@ -121,7 +121,7 @@ namespace Szt2_projekt
                     ab.SaveChanges();
                     Frissit();
                 }
-                catch (Exception j)
+                catch (Exception)
                 {
                     MessageBox.Show("A felhasználót nem lehet törölni, mert megrendelése van!");
                 }

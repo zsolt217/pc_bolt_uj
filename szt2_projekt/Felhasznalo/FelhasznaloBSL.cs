@@ -172,20 +172,6 @@ namespace Szt2_projekt
                     TAP_ID = VM.SelectedTap.TAP_ID
                 };
                 kedvencvezerlo.MentesKedvencekbe(felhasznaloid, uj);
-                //try
-                //{
-                //    DB.KEDVENCEK.Add(uj);
-                //    DB.SaveChanges();
-                //    MessageBox.Show("Kedvencek közé mentve");
-
-                //}
-                //catch (Exception hiba)
-                //{
-                //    Megosztott.Logolas(hiba.InnerException.Message);
-                //    MessageBox.Show("Adatbázishiba, nem sikerült rögzíteni.");
-
-
-                //}
             }
         }
 

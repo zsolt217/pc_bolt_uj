@@ -28,15 +28,12 @@ namespace Szt2_projekt
                         DB.UZENETEK.Add(new UZENETEK { FELHASZNALO_ID = felhid, DATUM = DateTime.Now, IRANY = false, LATTA_E = false, SZOVEG = uzenet, UZENET_ID = newId }); //irány=igaz-ügyitézőnek
                         DB.SaveChanges();
                         return true;
-                        break;
                     case Uzenetirany.Ugyintezonek:
                         DB.UZENETEK.Add(new UZENETEK { FELHASZNALO_ID = felhid, DATUM = DateTime.Now, IRANY = true, LATTA_E = false, SZOVEG = uzenet, UZENET_ID = newId }); //irány=igaz-ügyitézőnek
                         DB.SaveChanges();
                         return true;
-                        break;
                     default:
                         return false;
-                        break;
                 }
 
             }
@@ -56,11 +53,9 @@ namespace Szt2_projekt
                 {
                     case Rang.Felhasznalo:
                         return DB.UZENETEK.Where(x => x.FELHASZNALO_ID == felhid && x.IRANY == false).ToList();
-                        break;
                     case Rang.Ugyintezo:
                         return DB.UZENETEK.Where(x => x.IRANY == true).ToList();//ügyintézőnek az össze központba címzett megy
-                        break;
-                    default: return null; break;
+                    default: return null;
                 }
             }
             catch (Exception hiba)

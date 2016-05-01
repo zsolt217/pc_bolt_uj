@@ -78,7 +78,6 @@ namespace Szt2_projekt
                         MessageBox.Show("Hiba, nincs mentés!");
                         return true;
                     }
-                    break;
                 case Irasmod.Modosit:
                     try
                     {
@@ -105,8 +104,7 @@ namespace Szt2_projekt
                         MessageBox.Show("Hiba, nincs mentés!");
                         return true;
                     }
-                    break;
-                default: return false; break;
+                default: return false;
             }
 
 

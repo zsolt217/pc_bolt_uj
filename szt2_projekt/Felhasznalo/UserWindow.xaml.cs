@@ -13,7 +13,6 @@ namespace Szt2_projekt
     /// </summary>
     public partial class UserWindow : Window
     {
-        AdatbazisEntities DB = new AdatbazisEntities();
         FelhasznaloVM VM;
         FelhasznaloBSL BS;
         decimal id;
@@ -161,7 +160,7 @@ namespace Szt2_projekt
             lbl16.Content = string.Empty;
             lbl17.Content = string.Empty;
         } 
-        AdatbazisEntities ab;
+        
         #region Adatmegjelenítés
         private void rbAlaplap_Checked(object sender, RoutedEventArgs e)
         {
@@ -409,15 +408,8 @@ namespace Szt2_projekt
         {
             if (cBoxHDD.SelectedIndex != -1 && (rbWinchester.IsChecked == true) && cBoxHDD.SelectedIndex != cBoxHDD.Items.Count - 1)
             {
-                //ab = new AdatbazisEntities();
+
                 HDD aktHDD = new HDD();
-                //string keres = cBoxHDD.SelectedItem.ToString();
-                //var q = from akt in ab.HDD
-                //        where akt.TIPUSSZAM == keres
-                //        select akt;
-
-                //aktHDD = q.FirstOrDefault();
-
                 aktHDD = (HDD)cBoxHDD.SelectedValue;
 
                 lbl11.Content = aktHDD.AR;

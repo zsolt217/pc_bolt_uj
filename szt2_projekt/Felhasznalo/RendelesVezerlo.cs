@@ -51,25 +51,20 @@ namespace Szt2_projekt
                         DB.RENDELESEK.Where(x => x.RENDELES_ID == id).SingleOrDefault().ALLAPOT = "BEFOGADVA";
                         DB.SaveChanges();
                         return true;
-                        break;
                     case RendelesAllapot.Osszeallitas_alatt:
                         DB.RENDELESEK.Where(x => x.RENDELES_ID == id).SingleOrDefault().ALLAPOT = "OSSZEALLITAS_ALATT";
                         DB.SaveChanges();
                         return true;
-                        break;
                     case RendelesAllapot.Kiszallitas_alatt:
                         DB.RENDELESEK.Where(x => x.RENDELES_ID == id).SingleOrDefault().ALLAPOT = "KISZALLITAS_ALATT";
                         DB.SaveChanges();
                         return true;
-                        break;
                     case RendelesAllapot.Lezart:
                         DB.RENDELESEK.Where(x => x.RENDELES_ID == id).SingleOrDefault().ALLAPOT = "LEZART";
                         DB.SaveChanges();
                         return true;
-                        break;
                     default:
                         return false;
-                        break;
                 }
             }
             catch (Exception e)

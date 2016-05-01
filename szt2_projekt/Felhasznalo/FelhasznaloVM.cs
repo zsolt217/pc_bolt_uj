@@ -175,8 +175,8 @@ namespace Szt2_projekt
         List<TAP> tapok;
         TAP selectedTap;
         decimal selectedTapAr;
-
-        public bool felhasznalovaltoztatasengedelyezes;//annak a megoldására h ha kompatibilitasvizsgalo szűri vmely listát akk a selecteditemet módosítja és így új elemre is generál változásvizsgálatot=>végtelen ciklus hibával
+        //annak a megoldására h ha kompatibilitasvizsgalo szűri vmely listát akk a selecteditemet módosítja és így új elemre is generál változásvizsgálatot=>végtelen ciklus hibával
+        public bool felhasznalovaltoztatasengedelyezes;
 
         public decimal RendelesOsszeg {
             get

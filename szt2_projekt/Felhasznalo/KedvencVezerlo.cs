@@ -28,17 +28,6 @@ namespace Szt2_projekt
         {
             try
             {
-              //  ; var list = DB.KEDVENCEK.ToList();
-              //  foreach (var item in list)
-              //  {
-              //      Debug.WriteLine(item.KEDVENCEK_ID);
-              //  }
-              ////  DB = new AdatbazisEntities();
-              //  var entry= DB.Entry(torlendo);//ezt a részt stack overflow-n adták a remove hibának a megoldására, most már itt is elszáll
-              //  if (entry.State==EntityState.Detached)
-              //  {
-              //      DB.KEDVENCEK.Attach(torlendo);
-              //  }
                 KEDVENCEK kedv = DB.KEDVENCEK.Single(x => x.KEDVENCEK_ID == torlendo.KEDVENCEK_ID);
                 DB.KEDVENCEK.Remove(kedv);
                 DB.SaveChanges();

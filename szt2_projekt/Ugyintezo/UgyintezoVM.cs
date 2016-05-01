@@ -132,7 +132,6 @@ namespace Szt2_projekt
         public List<RENDELESEK> Rendelesek
         {
             get { return rendelesek; }
-            //set { rendelesek = value; }
         }
         RENDELESEK selectedrendeles;
 

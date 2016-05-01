@@ -148,9 +148,6 @@
       <DependentUpon>Adatbazis.tt</DependentUpon>
     </Compile>
     <Compile Include="Kozos\BoolToColorConverter.cs" />
-    <Compile Include="Kozos\MegrendelesWindow.xaml.cs">
-      <DependentUpon>MegrendelesWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Kozos\TermekVezerlo.cs" />
     <Compile Include="Kozos\UzenetKezelo.cs" />
     <Compile Include="MEMORIA.cs">
@@ -214,10 +211,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Kozos\MegrendelesWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Regisztralo_resz\RegisztracioWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
